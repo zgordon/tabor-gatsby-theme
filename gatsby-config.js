@@ -23,16 +23,17 @@ module.exports = {
     },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
-    // {
-    //   resolve: "gatsby-plugin-postcss",
-    //   options: {
-    //     postCssPlugins: [
-    //       autoprefixer({
-    //         browsers: ["last 2 versions"],
-    //       }),
-    //     ],
-    //   },
-    // },
+    `gatsby-plugin-svg-sprite`,
+    {
+      resolve: "gatsby-plugin-postcss",
+      options: {
+        postCssPlugins: [
+          autoprefixer({
+            browsers: ["last 2 versions"],
+          }),
+        ],
+      },
+    },
     {
       resolve: `gatsby-plugin-typography`,
       options: {
