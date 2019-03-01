@@ -1,7 +1,9 @@
 import React from "react"
+import Subscribe from "../Subscribe"
 
 const Footer = () => (
   <footer className="site-footer">
+    <Subscribe />
     <div className="site-info container center-align medium header-font gray">
       <span className="site-copyright">
         <span
