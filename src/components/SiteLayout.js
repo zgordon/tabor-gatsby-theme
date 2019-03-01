@@ -5,8 +5,8 @@ import Footer from "./Footer"
 import "../styles/scss/style.scss"
 
 const SiteLayout = ({ children, location }) => (
-  <div id="page" class="site top-spacer bottom-spacer">
-    <a class="skip-link screen-reader-text" href="#content">
+  <div id="page" className="site top-spacer bottom-spacer">
+    <a className="skip-link screen-reader-text" href="#content">
       Skip to content
     </a>
     <Header location={location} />

@@ -13,7 +13,7 @@ const PostEntry = ({ post }) => {
           <PostEntryTitle
             post={post}
             location="blog"
-            titleClass="entry-title h1"
+            titleclassName="entry-title h1"
           />
           <PostEntryMeta post={post} location="blog" />
         </header>

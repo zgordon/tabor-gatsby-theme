@@ -87,11 +87,11 @@ const SiteMenu = ({ location }) => (
             aria-label="Primary Menu"
           >
             <button
-              class="menu-toggle"
+              className="menu-toggle"
               aria-controls="top-menu"
               aria-expanded="false"
             >
-              <span class="screen-reader-text">Menu</span>
+              <span className="screen-reader-text">Menu</span>
             </button>
             <div className="menu-primary-container">
               <ul
