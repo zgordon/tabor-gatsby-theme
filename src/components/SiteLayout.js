@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import Header from "./SiteHeader"
-// import "./style.css"
+import Footer from "./Footer"
 import "../styles/scss/style.scss"
 
 const SiteLayout = ({ children, location }) => (
@@ -17,12 +17,7 @@ const SiteLayout = ({ children, location }) => (
       </div>
     </div>
 
-    <div className="footer">
-      © {new Date().getFullYear()} | Built with
-      {` `}
-      <a href="https://www.wpgraphql.com">WPGraphQL</a> and{` `}
-      <a href="https://www.gatsbyjs.org">Gatsby</a>
-    </div>
+    <Footer />
   </div>
 )
 
