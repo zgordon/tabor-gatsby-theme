@@ -1,6 +1,8 @@
 import React from "react"
 import { Link, StaticQuery, graphql } from "gatsby"
 import { createLocalLink } from "../../utils"
+import IconDown from "../../images/sprite.svg"
+//FIXME: find the right path to the icon ID
 
 const MENU_QUERY = graphql`
   fragment MenuFields on WPGraphQL_MenuItem {
@@ -60,7 +62,8 @@ const renderSubMenu = menuItem => (
     )}
     <button className="dropdown-toggle" aria-expanded="false">
       <svg className="icon icon-down" aria-hidden="true" role="img">
-        <use href="#icon-down" />
+        {/* <use href="#icon-down" /> */}
+        <use xlinkHref={`#${IconDown.id}`} />
       </svg>
       <span className="svg-fallback icon-down" />
       <span className="screen-reader-text">Expand child menu</span>
@@ -84,11 +87,11 @@ const SiteMenu = ({ location }) => (
             aria-label="Primary Menu"
           >
             <button
-              class="menu-toggle"
+              className="menu-toggle"
               aria-controls="top-menu"
               aria-expanded="false"
             >
-              <span class="screen-reader-text">Menu</span>
+              <span className="screen-reader-text">Menu</span>
             </button>
             <div className="menu-primary-container">
               <ul

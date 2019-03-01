@@ -5,7 +5,7 @@ import { Link } from "gatsby"
 const PostEntryMeta = ({ post }) => (
   <div className="entry-meta flex items-center medium header-font gray">
     <span className="posted-on">
-      <span class="screen-reader-text">Posted on</span>
+      <span className="screen-reader-text">Posted on</span>
       <Link to={`/blog/${post.uri}`} className="posted-on--published">
         <span>Published</span>
         <time className="updated" datetime={post.date}>

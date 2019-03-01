@@ -24,16 +24,22 @@ const Index = ({ location }) => (
         <div className="container max-width">
           <div className="flex justify-between">
             <div className="flex justify-start items-center">
-              <div className="logo">
-                <Link to="/">
-                  <img
-                    src={wpgraphqlLogo}
-                    alt="WPGraphQL Logo"
-                    style={{ height: `30px`, width: `30px` }}
-                  />
-                  {data.site.siteMetadata.title}
-                </Link>
-              </div>
+              <Link
+                to="/"
+                className="custom-logo-link site-logo"
+                rel="home"
+                itemprop="url"
+              >
+                <img
+                  src={wpgraphqlLogo}
+                  alt="WPGraphQL Logo"
+                  style={{ height: 150, width: 150 }}
+                  className="custom-logo initial loaded"
+                  alt={data.site.siteMetadata.title}
+                  itemprop="logo"
+                />
+              </Link>
+              <span className="sep" />
             </div>
             <div className="flex items-center">
               <SiteMenu location={location} />
