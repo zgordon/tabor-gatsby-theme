@@ -17,7 +17,7 @@ const PostEntry = ({ post }) => {
           />
           <PostEntryMeta post={post} location="blog" />
         </header>
-        {post.featuredImage && <PostEntryMedia post={post} />}
+        {post.featuredImage && <PostEntryMedia post={post} location="blog" />}
         <div
           className="entry-content"
           dangerouslySetInnerHTML={{

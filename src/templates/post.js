@@ -1,26 +1,23 @@
-import React, { Fragment } from "react"
-import { graphql } from "gatsby"
+import React from "react"
+import { graphql, Link } from "gatsby"
 import SiteLayout from "../components/SiteLayout"
-import CategoriesWidget from "../components/CategoriesWidget"
-import RecentCommentsWidget from "../components/RecentCommentsWidget"
-import RecentPostsWidget from "../components/RecentPostsWidget"
 import PostEntryMeta from "../components/PostEntryMeta"
+import PostEntryTitle from "../components/PostEntryTitle"
+import PostEntryMedia from "../components/PostEntryMedia"
 import Seo from "../components/Seo"
 
-const renderTermNodes = (nodes, title) => (
-  <div>
-    {title}
-    {` `}
+const renderTermNodes = (nodes, termType) => (
+  <span className="cat-links header-font extra-small medium smooth dark-gray">
     {nodes.map(term => (
-      <div className="tag">{term.name}</div>
+      <Link to={`/blog/${termType}/${term.slug}`}>{term.name}</Link>
     ))}
-  </div>
+  </span>
 )
 
 const renderTerms = (categoryNodes = [], tagNodes = []) => (
   <>
-    {categoryNodes ? renderTermNodes(categoryNodes, `Categories: `) : null}
-    {tagNodes && tagNodes.length ? renderTermNodes(tagNodes, `Tags: `) : null}
+    {categoryNodes ? renderTermNodes(categoryNodes, "category") : null}
+    {tagNodes && tagNodes.length ? renderTermNodes(tagNodes, "tag") : null}
   </>
 )
 
@@ -35,24 +32,42 @@ const Post = props => {
   return (
     <SiteLayout location={location}>
       <Seo title={`${post.title}`} />
-      <div className="content">
-        <h1 style={{ wordBreak: `break-all` }}>{title}</h1>
+      <div className="post-wrapper">
+        <header className="entry-header top-spacer bottom-spacer">
+          <PostEntryTitle
+            location="single"
+            post={post}
+            titleClass="entry-title h1"
+          />
 
-        <PostEntryMeta post={post} />
+          <PostEntryMeta post={post} />
+        </header>
+        {post.featuredImage && <PostEntryMedia post={post} location="single" />}
 
         <div
-          style={{ wordBreak: `break-all` }}
+          className="entry-content"
           dangerouslySetInnerHTML={{ __html: content }}
         />
-        {post.categories.nodes.length || post.tags.nodes.length
-          ? renderTerms(post.categories.nodes, post.tags.nodes)
-          : null}
       </div>
-      <div className="sidebar">
-        <RecentPostsWidget />
-        <CategoriesWidget />
-        <RecentCommentsWidget />
-      </div>
+      <footer className="entry-footer flex justify-between">
+        <div className="flex justify-start items-center">
+          <a
+            className="comments-trigger button button--mobile-fullwidth center-align"
+            id="comments-trigger"
+            href="#" //TODO: setup the comment functionality
+          >
+            <span className="display-none">Close Comments</span>
+
+            <span className="display-inline-block">Leave a Comment</span>
+          </a>
+        </div>
+
+        <div className="entry-footer__taxonomy justify-end self-center items-center">
+          {post.categories.nodes.length || post.tags.nodes.length
+            ? renderTerms(post.categories.nodes, post.tags.nodes)
+            : null}
+        </div>
+      </footer>
     </SiteLayout>
   )
 }
@@ -66,23 +81,24 @@ export const pageQuery = graphql`
         title
         content
         uri
+        featuredImage {
+          sourceUrl
+          title
+        }
         author {
           name
           slug
-          avatar {
-            url
-          }
         }
         tags {
           nodes {
             name
-            link
+            slug
           }
         }
         categories {
           nodes {
             name
-            link
+            slug
           }
         }
       }
