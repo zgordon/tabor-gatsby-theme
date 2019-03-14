@@ -20,46 +20,6 @@ const MENU_QUERY = graphql`
           childItems {
             nodes {
               ...MenuFields
-              childItems {
-                nodes {
-                  ...MenuFields
-                  childItems {
-                    nodes {
-                      ...MenuFields
-                      childItems {
-                        nodes {
-                          ...MenuFields
-                          childItems {
-                            nodes {
-                              ...MenuFields
-                              childItems {
-                                nodes {
-                                  ...MenuFields
-                                  childItems {
-                                    nodes {
-                                      ...MenuFields
-                                      childItems {
-                                        nodes {
-                                          ...MenuFields
-                                          childItems {
-                                            nodes {
-                                              ...MenuFields
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
             }
           }
         }
@@ -104,15 +64,34 @@ const Menu = ({ location }) => (
     render={data => {
       if (data.wpgraphql.menuItems) {
         return (
-          <ul role="menu">
-            {data.wpgraphql.menuItems.nodes.map(menuItem => {
-              if (menuItem.childItems.nodes.length) {
-                return renderSubMenu(menuItem)
-              } else {
-                return renderMenuItem(menuItem)
-              }
-            })}
-          </ul>
+          <nav
+            id="site-navigation"
+            className="main-navigation nav primary flex items-center justify-end"
+            role="navigation"
+            aria-label="Primary Menu"
+          >
+            <button
+              className="menu-toggle"
+              aria-controls="top-menu"
+              aria-expanded="false"
+            >
+              <span className="screen-reader-text">Menu</span>
+            </button>
+            <div className="menu-primary-container">
+              <ul
+                id="menu-primary"
+                className="primary-menu header-font medium smooth gray list-reset"
+              >
+                {data.wpgraphql.menuItems.nodes.map(menuItem => {
+                  if (menuItem.childItems.nodes.length) {
+                    return renderSubMenu(menuItem)
+                  } else {
+                    return renderMenuItem(menuItem)
+                  }
+                })}
+              </ul>
+            </div>
+          </nav>
         )
       } else {
         return null
