@@ -4,6 +4,10 @@ const PostTemplateFragment = `
     postId
     title
     content
+    featuredImage {
+      sourceUrl
+      title
+    }
     categories {
       nodes {
         name
@@ -35,6 +39,10 @@ const BlogPreviewFragment = `
     date
     slug
     excerpt
+    featuredImage {
+      sourceUrl
+      title
+    }
     author {
       name
       avatar(size:50) {
