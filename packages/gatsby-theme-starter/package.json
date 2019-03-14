@@ -1,0 +1,33 @@
+{
+  "name": "gatsby-theme-starter",
+  "version": "0.0.1",
+  "description": "Gatsby starter theme",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "gatsby": "^2.1.27",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.1.27",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
+  },
+  "dependencies": {
+    "autoprefixer": "^9.4.10",
+    "axios": "^0.18.0",
+    "gatsby-plugin-page-creator": "^2.0.9",
+    "gatsby-plugin-postcss": "^2.0.5",
+    "gatsby-plugin-react-helmet": "^3.0.8",
+    "gatsby-plugin-sass": "^2.0.10",
+    "gatsby-plugin-typography": "^2.2.8",
+    "gatsby-source-graphql": "^2.0.14",
+    "moment": "^2.24.0",
+    "node-sass": "^4.11.0",
+    "prop-types": "^15.7.2",
+    "react-helmet": "^5.2.0",
+    "react-typography": "^0.16.19",
+    "typography": "^0.16.19"
+  }
+}

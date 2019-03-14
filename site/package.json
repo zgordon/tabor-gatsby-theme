@@ -1,0 +1,19 @@
+{
+  "name": "site",
+  "version": "0.0.1",
+  "description": "demo site",
+  "main": "gatsby-config.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "develop": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve"
+  },
+  "dependencies": {
+    "gatsby": "^2.1.27",
+    "gatsby-theme-starter": "*",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
+  }
+}
