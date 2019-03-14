@@ -7,7 +7,7 @@ module.exports = {
   },
   __experimentalThemes: [
     {
-      resolve: 'gatsby-theme-starter',
+      resolve: 'gatsby-theme-tabor',
       options: { wordPressUrl: `http://alexandraspalato.com/tabor` },
     },
   ],
