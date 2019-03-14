@@ -1,6 +1,7 @@
 import React from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
 import Menu from "./Menu"
+import wpgraphqlLogo from "../images/wpgraphql-logo.png"
 
 const Header = props => (
   <StaticQuery
@@ -9,27 +10,43 @@ const Header = props => (
         site {
           siteMetadata {
             title
-            description
           }
         }
       }
     `}
-    render={data => {
-      return (
-        <header id="masthead" className="site-header">
-          <p className="site-title">
-            <Link to="/" rel="home">
-              {data.site.siteMetadata.title}
-            </Link>
-          </p>
-
-          <p className="site-description">
-            {data.site.siteMetadata.description}
-          </p>
-          <Menu />
-        </header>
-      )
-    }}
+    render={data => (
+      <header
+        id="masthead"
+        className="site-header drop-in drop-in--from-top drop-in--js drop-in--pinned drop-in--top"
+        role="banner"
+      >
+        <div className="container max-width">
+          <div className="flex justify-between">
+            <div className="flex justify-start items-center">
+              <Link
+                to="/"
+                className="custom-logo-link site-logo"
+                rel="home"
+                itemprop="url"
+              >
+                <img
+                  src={wpgraphqlLogo}
+                  alt="WPGraphQL Logo"
+                  style={{ height: 150, width: 150 }}
+                  className="custom-logo initial loaded"
+                  alt={data.site.siteMetadata.title}
+                  itemprop="logo"
+                />
+              </Link>
+              <span className="sep" />
+            </div>
+            <div className="flex items-center">
+              <Menu />
+            </div>
+          </div>
+        </div>
+      </header>
+    )}
   />
 )
 

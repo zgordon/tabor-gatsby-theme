@@ -2,7 +2,7 @@ import React from "react"
 import Header from "./Header"
 import Footer from "./Footer"
 import PropTypes from "prop-types"
-import "../styles/style.scss"
+import "../styles/scss/style.scss"
 
 const Layout = ({ children }) => (
   <>

@@ -1,10 +1,10 @@
-import Typography from 'typography'
+import Typography from "typography"
 
 const typography = new Typography({
-  baseFontSize: '18px',
+  baseFontSize: "19px",
   baseLineHeight: 1.666,
-  headerFontFamily: ['Oswald', 'sans-serif'],
-  bodyFontFamily: ['Inconsolata', 'monospace'],
+  headerFontFamily: ["Heebo", "sans-serif"],
+  bodyFontFamily: ["Lora", "serif"],
 })
 
 export default typography
