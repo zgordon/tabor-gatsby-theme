@@ -9,15 +9,13 @@ const SingleCategory = props => {
   } = props
 
   return (
-    <Layout classNames="archive">
+    <Layout>
       <SEO
         title={`Category - ${name}`}
         description={`A collection of posts from the ${name} category.`}
       />
-      <header className="page-header">
-        <h1 className="page-title">
-          Category Archives: <span className="page-description">{name}</span>
-        </h1>
+      <header className="page-header page-header__archive container bottom-spacer">
+        <h2 className="page-title h2">{name}</h2>
       </header>
 
       {posts.nodes &&

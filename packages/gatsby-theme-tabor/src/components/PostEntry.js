@@ -7,10 +7,11 @@ import PostEntryMedia from "./PostEntryMedia"
 const PostEntry = ({ post }) => {
   const excerpt = post.excerpt
     ? post.excerpt
-    : `${post.content
-        .split(" ")
-        .slice(0, 30)
-        .join(" ")} ...`
+    : `${post.content &&
+        post.content
+          .split(" ")
+          .slice(0, 30)
+          .join(" ")} ...`
 
   return (
     <article className="post type-post">

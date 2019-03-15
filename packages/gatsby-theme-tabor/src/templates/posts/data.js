@@ -39,6 +39,7 @@ const BlogPreviewFragment = `
     date
     slug
     excerpt
+    content
     featuredImage {
       sourceUrl
       title
