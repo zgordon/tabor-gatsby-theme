@@ -9,15 +9,13 @@ const SingleTag = props => {
   } = props
 
   return (
-    <Layout className="archive">
+    <Layout>
       <SEO
         title={`Tag - ${name}`}
         description={`A collection of posts from the ${name} tag.`}
       />
-      <header className="page-header">
-        <h1 className="page-title">
-          Tag Archives: <span className="page-description">{name}</span>
-        </h1>
+      <header className="page-header page-header__archive container bottom-spacer">
+        <h2 className="page-title h2">{name}</h2>
       </header>
 
       {posts.nodes &&
