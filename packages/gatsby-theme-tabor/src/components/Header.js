@@ -32,7 +32,8 @@ const Header = props => (
                 <img
                   src={wpgraphqlLogo}
                   alt="WPGraphQL Logo"
-                  style={{ height: 150, width: 150 }}
+                  width="150"
+                  height="150"
                   className="custom-logo initial loaded"
                   alt={data.site.siteMetadata.title}
                   itemprop="logo"

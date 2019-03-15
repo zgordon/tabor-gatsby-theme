@@ -1,5 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
+import IconLeft from "./Icons/Iconleft"
+import IconRight from "./Icons/IconRight"
 
 //TODO: add svg icons and pages for screen readers
 
@@ -13,7 +15,7 @@ const Pagination = ({ pageNumber, hasNextPage, allPosts, itemsPerPage }) => (
           to={pageNumber > 2 ? `/page/${pageNumber - 1}` : `/`}
         >
           <span className="screen-reader-text">Previous page</span>
-          Previous
+          <IconLeft />
         </Link>
       )}
       <span aria-current="page" className="page-numbers current">
@@ -24,7 +26,7 @@ const Pagination = ({ pageNumber, hasNextPage, allPosts, itemsPerPage }) => (
       {hasNextPage && (
         <Link className="next page-numbers" to={`page/${pageNumber + 1}`}>
           <span className="screen-reader-text">Next page</span>
-          Next
+          <IconRight />
         </Link>
       )}
     </div>
