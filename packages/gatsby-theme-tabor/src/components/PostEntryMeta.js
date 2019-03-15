@@ -15,7 +15,7 @@ const PostEntryMeta = ({ post }) => (
       <span>
         by
         <span className="author">
-          <Link to={`/author/${post.author.slug}`}>
+          <Link to={`/blog/author/${post.author.slug}`}>
             {`  ${post.author.name}`}
           </Link>
         </span>
