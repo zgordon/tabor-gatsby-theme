@@ -1,7 +1,8 @@
 import React from "react"
-import { StaticQuery, graphql, Link } from "gatsby"
+import { StaticQuery, graphql } from "gatsby"
 import Menu from "./Menu"
-import wpgraphqlLogo from "../images/wpgraphql-logo.png"
+import Logo from "./Logo"
+import SocialNav from "./SocialNav"
 
 const Header = props => (
   <StaticQuery
@@ -23,23 +24,9 @@ const Header = props => (
         <div className="container max-width">
           <div className="flex justify-between">
             <div className="flex justify-start items-center">
-              <Link
-                to="/"
-                className="custom-logo-link site-logo"
-                rel="home"
-                itemprop="url"
-              >
-                <img
-                  src={wpgraphqlLogo}
-                  alt="WPGraphQL Logo"
-                  width="150"
-                  height="150"
-                  className="custom-logo initial loaded"
-                  alt={data.site.siteMetadata.title}
-                  itemprop="logo"
-                />
-              </Link>
+              <Logo data={data} />
               <span className="sep" />
+              <SocialNav />
             </div>
             <div className="flex items-center">
               <Menu />

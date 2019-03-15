@@ -1,9 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import IconLeft from "./Icons/Iconleft"
-import IconRight from "./Icons/IconRight"
-
-//TODO: add svg icons and pages for screen readers
+import { IconLeft, IconRight } from "./Icons"
 
 const Pagination = ({ pageNumber, hasNextPage, allPosts, itemsPerPage }) => (
   <nav className="pagination navigation" role="navigation">
