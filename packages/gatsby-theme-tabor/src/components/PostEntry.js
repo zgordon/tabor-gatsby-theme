@@ -10,7 +10,7 @@ const PostEntry = ({ post }) => {
     : `${post.content
         .split(" ")
         .slice(0, 30)
-        .join(" ")} [...]`
+        .join(" ")} ...`
 
   return (
     <article className="post type-post">

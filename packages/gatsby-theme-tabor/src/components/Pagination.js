@@ -1,31 +1,34 @@
 import React from "react"
 import { Link } from "gatsby"
 
-const Pagination = ({ pageNumber, hasNextPage, allPosts, itemsPerPage }) => (
-  <div className="pagination">
-    <h3>Pagination</h3>
-    {pageNumber > 1 && (
-      <button>
-        <Link to={pageNumber > 2 ? `/page/${pageNumber - 1}` : `/`}>
-          Previous Posts
-        </Link>
-      </button>
-    )}
+//TODO: add svg icons and pages for screen readers
 
-    {Array.from({ length: allPosts.length / itemsPerPage }, (_, i) => (
-      <Link
-        key={`pagination-number${i + 1}`}
-        to={i === 0 ? "/" : `/page/${i + 1}`}
-      >
-        {i + 1}
-      </Link>
-    ))}
-    {hasNextPage && (
-      <button>
-        <Link to={`page/${pageNumber + 1}`}>Next Posts</Link>
-      </button>
-    )}
-  </div>
+const Pagination = ({ pageNumber, hasNextPage, allPosts, itemsPerPage }) => (
+  <nav className="pagination navigation" role="navigation">
+    <h2 className="screen-reader-text">Posts navigation</h2>
+    <div className="nav-links">
+      {pageNumber > 1 && (
+        <Link
+          className="prev page-numbers"
+          to={pageNumber > 2 ? `/page/${pageNumber - 1}` : `/`}
+        >
+          <span className="screen-reader-text">Previous page</span>
+          Previous
+        </Link>
+      )}
+      <span aria-current="page" className="page-numbers current">
+        <span className="meta-nav screen-reader-text">Page </span>
+        {pageNumber}
+      </span>
+
+      {hasNextPage && (
+        <Link className="next page-numbers" to={`page/${pageNumber + 1}`}>
+          <span className="screen-reader-text">Next page</span>
+          Next
+        </Link>
+      )}
+    </div>
+  </nav>
 )
 
 export default Pagination
