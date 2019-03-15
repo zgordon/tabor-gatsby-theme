@@ -1,6 +1,7 @@
 import React from "react"
 import Layout from "../../components/layout"
 import PostEntry from "../../components/PostEntry"
+import HeaderArchive from "../../components/HeaderArchive"
 import SEO from "../../components/seo"
 
 const AuthorArchive = props => {
@@ -13,11 +14,7 @@ const AuthorArchive = props => {
         title={`Author - ${name}`}
         description={`A collection of posts written by ${name}.`}
       />
-      <header class="page-header page-header__archive container bottom-spacer">
-        <h2 class="page-title h2">
-          <span class="vcard">{name}</span>
-        </h2>
-      </header>
+      <HeaderArchive name={name} />
 
       {posts.nodes &&
         posts.nodes.map(post => {
