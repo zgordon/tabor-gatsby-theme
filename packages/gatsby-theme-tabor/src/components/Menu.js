@@ -35,10 +35,16 @@ const renderMenuItem = menuItem => {
   } else {
     return (
       <li className="menu-item" key={menuItem.id}>
-        {link ? (
-          <Link to={createLocalLink(menuItem.url)}>{menuItem.label}</Link>
+        {menuItem.connectedObject.__typename !== "WPGraphQL_MenuItem" ? (
+          link ? (
+            <Link to={createLocalLink(menuItem.url)}>{menuItem.label}</Link>
+          ) : (
+            menuItem.label
+          )
         ) : (
-          menuItem.label
+          <a href={menuItem.url} target="_blank">
+            {menuItem.label}
+          </a>
         )}
       </li>
     )
