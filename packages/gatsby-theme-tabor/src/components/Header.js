@@ -16,11 +16,7 @@ const Header = props => (
       }
     `}
     render={data => (
-      <header
-        id="masthead"
-        className="site-header drop-in drop-in--from-top drop-in--js drop-in--pinned drop-in--top"
-        role="banner"
-      >
+      <header id="masthead" className="site-header " role="banner">
         <div className="container max-width">
           <div className="flex justify-between">
             <div className="flex justify-start items-center">

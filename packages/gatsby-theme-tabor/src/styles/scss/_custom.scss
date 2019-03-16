@@ -1,6 +1,51 @@
-@media (min-width: 600px) {
-  body .custom-logo-link img.custom-logo {
-    width: 50px;
-    margin-bottom: 0;
+body .custom-logo-link img.custom-logo {
+  width: 50px;
+  margin-bottom: 0;
+}
+
+.headroom--unfixed {
+  .site-header {
+    .container {
+      padding-bottom: 25px;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 25px;
+      transition: padding 0.4s cubic-bezier(0.694, 0.0482, 0.335, 1);
+      width: 100%;
+
+      @media screen and (min-width: 744px) {
+        width: 98vw;
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+    }
+  }
+}
+// .headroom .site-header .container {
+//   transition: padding 0.4s cubic-bezier(0.694, 0.0482, 0.335, 1);
+// }
+
+.headroom--pinned {
+  @media only screen and(min-width: 600px) {
+    .site-header {
+      background: #fff;
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
+      .container {
+        padding-top: 8px !important;
+        padding-bottom: 8px !important;
+      }
+    }
+    .site-logo img {
+      transform: scale(0.8);
+    }
+  }
+}
+
+.headroom--pinned,
+.headroom--unpinned {
+  @media only screen and(min-width: 600px) {
+    .site-logo img {
+      transform: scale(0.8);
+    }
   }
 }

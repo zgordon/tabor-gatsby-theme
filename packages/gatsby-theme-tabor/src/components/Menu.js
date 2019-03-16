@@ -1,6 +1,7 @@
 import React from "react"
 import { Link, StaticQuery, graphql } from "gatsby"
 import { createLocalLink } from "../utils"
+import MenuToggle from "./MenuToggle"
 
 const MENU_QUERY = graphql`
   fragment MenuFields on WPGraphQL_MenuItem {
@@ -76,13 +77,7 @@ const Menu = ({ location }) => (
             role="navigation"
             aria-label="Primary Menu"
           >
-            <button
-              className="menu-toggle"
-              aria-controls="top-menu"
-              aria-expanded="false"
-            >
-              <span className="screen-reader-text">Menu</span>
-            </button>
+            <MenuToggle />
             <div className="menu-primary-container">
               <ul
                 id="menu-primary"
