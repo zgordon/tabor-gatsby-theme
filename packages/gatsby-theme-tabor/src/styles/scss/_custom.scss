@@ -26,19 +26,19 @@ body .custom-logo-link img.custom-logo {
 // }
 
 .headroom--pinned {
-  @media only screen and(min-width: 600px) {
-    .site-header {
-      background: #fff;
-      box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
-      .container {
-        padding-top: 8px !important;
-        padding-bottom: 8px !important;
-      }
-    }
-    .site-logo img {
-      transform: scale(0.8);
+  // @media only screen and(min-width: 600px) {
+  .site-header {
+    background: #fff;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
+    .container {
+      padding-top: 8px !important;
+      padding-bottom: 8px !important;
     }
   }
+  .site-logo img {
+    transform: scale(0.8);
+  }
+  // }
 }
 
 .headroom--pinned,
@@ -48,4 +48,7 @@ body .custom-logo-link img.custom-logo {
       transform: scale(0.8);
     }
   }
+}
+.headroom-wrapper {
+  height: 100px !important;
 }

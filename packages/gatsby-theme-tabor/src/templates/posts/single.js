@@ -4,6 +4,7 @@ import Layout from "../../components/Layout"
 import PostEntryMeta from "../../components/PostEntryMeta"
 import PostEntryTitle from "../../components/PostEntryTitle"
 import PostEntryMedia from "../../components/PostEntryMedia"
+import EngagementBar from "../../components/EngagementBar"
 import SEO from "../../components/SEO"
 
 const renderTermNodes = (nodes, termType) => (
@@ -48,26 +49,27 @@ const Post = props => {
           className="entry-content"
           dangerouslySetInnerHTML={{ __html: content }}
         />
-      </div>
-      <footer className="entry-footer flex justify-between">
-        <div className="flex justify-start items-center">
-          <a
-            className="comments-trigger button button--mobile-fullwidth center-align"
-            id="comments-trigger"
-            href="#" //TODO: setup the comment functionality
-          >
-            <span className="display-none">Close Comments</span>
+        <footer className="entry-footer flex justify-between">
+          <div className="flex justify-start items-center">
+            <a
+              className="comments-trigger button button--mobile-fullwidth center-align"
+              id="comments-trigger"
+              href="#" //TODO: setup the comment functionality
+            >
+              <span className="display-none">Close Comments</span>
 
-            <span className="display-inline-block">Leave a Comment</span>
-          </a>
-        </div>
-        {/* TODO: add taxonomies to a new component */}
-        <div className="entry-footer__taxonomy justify-end self-center items-center">
-          {post.categories.nodes.length || post.tags.nodes.length
-            ? renderTerms(post.categories.nodes, post.tags.nodes)
-            : null}
-        </div>
-      </footer>
+              <span className="display-inline-block">Leave a Comment</span>
+            </a>
+          </div>
+          {/* TODO: add taxonomies to a new component */}
+          <div className="entry-footer__taxonomy justify-end self-center items-center">
+            {post.categories.nodes.length || post.tags.nodes.length
+              ? renderTerms(post.categories.nodes, post.tags.nodes)
+              : null}
+          </div>
+        </footer>
+      </div>
+      <EngagementBar post={post} />
     </Layout>
   )
 }
@@ -81,6 +83,7 @@ export const pageQuery = graphql`
         title
         content
         uri
+        id
         featuredImage {
           sourceUrl
           title
