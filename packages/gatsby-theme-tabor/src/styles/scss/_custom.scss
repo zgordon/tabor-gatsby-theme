@@ -49,6 +49,21 @@ body .custom-logo-link img.custom-logo {
     }
   }
 }
-.headroom-wrapper {
-  height: 100px !important;
+*:not(.content) {
+  .headroom-wrapper {
+    height: 100px !important;
+  }
 }
+.content {
+  .headroom-wrapper {
+    height: 60px !important;
+  }
+}
+
+//Headroom engagement bar
+
+// initial state: headroom--unfixed -> bar drop-in drop-in--from-bottom drop-in-style-2 drop-in--js drop-in--not-top
+
+// scroll: headroom--unfixed headroom-disable-animation -> bar drop-in drop-in--from-bottom drop-in-style-2 drop-in--js drop-in--not-top drop-in--unpinned
+
+// scroll to top: headroom--pinned headroom--scrolled -> bar drop-in drop-in--from-bottom drop-in-style-2 drop-in--js drop-in--not-top drop-in--pinned

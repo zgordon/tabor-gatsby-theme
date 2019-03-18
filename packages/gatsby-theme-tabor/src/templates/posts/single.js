@@ -1,11 +1,12 @@
-import React from "react"
-import { graphql, Link } from "gatsby"
-import Layout from "../../components/Layout"
-import PostEntryMeta from "../../components/PostEntryMeta"
-import PostEntryTitle from "../../components/PostEntryTitle"
-import PostEntryMedia from "../../components/PostEntryMedia"
-import EngagementBar from "../../components/EngagementBar"
-import SEO from "../../components/SEO"
+import React from 'react';
+import { graphql, Link } from 'gatsby';
+import Headroom from 'react-headroom';
+import Layout from '../../components/Layout';
+import PostEntryMeta from '../../components/PostEntryMeta';
+import PostEntryTitle from '../../components/PostEntryTitle';
+import PostEntryMedia from '../../components/PostEntryMedia';
+import EngagementBar from '../../components/EngagementBar';
+import SEO from '../../components/SEO';
 
 const renderTermNodes = (nodes, termType) => (
   <span className="cat-links header-font extra-small medium smooth dark-gray">
@@ -13,14 +14,14 @@ const renderTermNodes = (nodes, termType) => (
       <Link to={`/blog/${termType}/${term.slug}`}>{term.name}</Link>
     ))}
   </span>
-)
+);
 
 const renderTerms = (categoryNodes = [], tagNodes = []) => (
   <>
-    {categoryNodes ? renderTermNodes(categoryNodes, "category") : null}
-    {tagNodes && tagNodes.length ? renderTermNodes(tagNodes, "tag") : null}
+    {categoryNodes ? renderTermNodes(categoryNodes, 'category') : null}
+    {tagNodes && tagNodes.length ? renderTermNodes(tagNodes, 'tag') : null}
   </>
-)
+);
 
 const Post = props => {
   const {
@@ -28,8 +29,8 @@ const Post = props => {
     data: {
       wpgraphql: { post },
     },
-  } = props
-  const { title, content } = post
+  } = props;
+  const { title, content } = post;
   return (
     <Layout location={location}>
       <SEO title={`${post.title}`} />
@@ -69,12 +70,18 @@ const Post = props => {
           </div>
         </footer>
       </div>
-      <EngagementBar post={post} />
+      <Headroom
+        disableInlineStyles={true}
+        className=""
+        onPin={e => console.log(e)}
+      >
+        <EngagementBar post={post} />
+      </Headroom>
     </Layout>
-  )
-}
+  );
+};
 
-export default Post
+export default Post;
 
 export const pageQuery = graphql`
   query GET_POST($id: ID!) {
@@ -107,4 +114,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
