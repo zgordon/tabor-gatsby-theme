@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { Link } from 'gatsby';
 
 import Layout from '../../components/Layout';
 import PostEntryMeta from '../../components/PostEntryMeta';
@@ -23,16 +23,13 @@ const renderTerms = (categoryNodes = [], tagNodes = []) => (
   </>
 );
 
-const Post = props => {
-  const {
-    location,
-    data: {
-      wpgraphql: { post },
-    },
-  } = props;
-  const { title, content } = post;
+const Post = ({ pageContext: post }) => {
+  // const {
+  //   pageContext: {title, content},
+  // } = props;
+  // const { title, content } = post;
   return (
-    <Layout location={location}>
+    <Layout>
       <SEO title={`${post.title}`} />
       <div className="post-wrapper">
         <header className="entry-header top-spacer bottom-spacer">
@@ -48,7 +45,7 @@ const Post = props => {
 
         <div
           className="entry-content"
-          dangerouslySetInnerHTML={{ __html: content }}
+          dangerouslySetInnerHTML={{ __html: post.content }}
         />
         <footer className="entry-footer flex justify-between">
           <div className="flex justify-start items-center">
@@ -77,36 +74,3 @@ const Post = props => {
 };
 
 export default Post;
-
-export const pageQuery = graphql`
-  query GET_POST($id: ID!) {
-    wpgraphql {
-      post(id: $id) {
-        title
-        content
-        uri
-        id
-        featuredImage {
-          sourceUrl
-          title
-        }
-        author {
-          name
-          slug
-        }
-        tags {
-          nodes {
-            name
-            slug
-          }
-        }
-        categories {
-          nodes {
-            name
-            slug
-          }
-        }
-      }
-    }
-  }
-`;
