@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
-import Headroom from 'react-headroom';
+
 import Layout from '../../components/Layout';
 import PostEntryMeta from '../../components/PostEntryMeta';
 import PostEntryTitle from '../../components/PostEntryTitle';
@@ -70,13 +70,8 @@ const Post = props => {
           </div>
         </footer>
       </div>
-      <Headroom
-        disableInlineStyles={true}
-        className=""
-        onPin={e => console.log(e)}
-      >
-        <EngagementBar post={post} />
-      </Headroom>
+
+      <EngagementBar post={post} />
     </Layout>
   );
 };
