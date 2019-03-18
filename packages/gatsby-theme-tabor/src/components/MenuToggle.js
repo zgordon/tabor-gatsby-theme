@@ -1,9 +1,14 @@
-import React from "react"
+import React from 'react';
 
-const MenuToggle = () => (
-  <button class="menu-toggle" aria-controls="top-menu" aria-expanded="false">
+const MenuToggle = ({ onClick }) => (
+  <button
+    class="menu-toggle"
+    aria-controls="top-menu"
+    aria-expanded="false"
+    onClick={onClick}
+  >
     <span class="screen-reader-text">Menu</span>
   </button>
-)
+);
 
-export default MenuToggle
+export default MenuToggle;

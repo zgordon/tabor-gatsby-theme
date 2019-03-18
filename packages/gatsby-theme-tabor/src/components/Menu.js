@@ -1,7 +1,7 @@
-import React from "react"
-import { Link, StaticQuery, graphql } from "gatsby"
-import { createLocalLink } from "../utils"
-import MenuToggle from "./MenuToggle"
+import React, { useRef } from 'react';
+import { Link, StaticQuery, graphql } from 'gatsby';
+import { createLocalLink } from '../utils';
+import MenuToggle from './MenuToggle';
 
 const MENU_QUERY = graphql`
   fragment MenuFields on WPGraphQL_MenuItem {
@@ -27,16 +27,16 @@ const MENU_QUERY = graphql`
       }
     }
   }
-`
+`;
 
 const renderMenuItem = menuItem => {
-  const link = createLocalLink(menuItem.url)
+  const link = createLocalLink(menuItem.url);
   if (menuItem.childItems && menuItem.childItems.nodes.length) {
-    return renderSubMenu(menuItem)
+    return renderSubMenu(menuItem);
   } else {
     return (
       <li className="menu-item" key={menuItem.id}>
-        {menuItem.connectedObject.__typename !== "WPGraphQL_MenuItem" ? (
+        {menuItem.connectedObject.__typename !== 'WPGraphQL_MenuItem' ? (
           link ? (
             <Link to={createLocalLink(menuItem.url)}>{menuItem.label}</Link>
           ) : (
@@ -48,9 +48,9 @@ const renderMenuItem = menuItem => {
           </a>
         )}
       </li>
-    )
+    );
   }
-}
+};
 
 const renderSubMenu = menuItem => (
   <li className="has-subMenu menu-item" key={menuItem.id}>
@@ -63,42 +63,50 @@ const renderSubMenu = menuItem => (
       {menuItem.childItems.nodes.map(item => renderMenuItem(item))}
     </ul>
   </li>
-)
+);
 
-const Menu = ({ location }) => (
-  <StaticQuery
-    query={MENU_QUERY}
-    render={data => {
-      if (data.wpgraphql.menuItems) {
-        return (
-          <nav
-            id="site-navigation"
-            className="main-navigation nav primary flex items-center justify-end"
-            role="navigation"
-            aria-label="Primary Menu"
-          >
-            <MenuToggle />
-            <div className="menu-primary-container">
-              <ul
-                id="menu-primary"
-                className="primary-menu header-font medium smooth gray list-reset"
-              >
-                {data.wpgraphql.menuItems.nodes.map(menuItem => {
-                  if (menuItem.childItems.nodes.length) {
-                    return renderSubMenu(menuItem)
-                  } else {
-                    return renderMenuItem(menuItem)
-                  }
-                })}
-              </ul>
-            </div>
-          </nav>
-        )
-      } else {
-        return null
-      }
-    }}
-  />
-)
+const Menu = ({ location }) => {
+  const navRef = useRef();
+  const animateButton = () => {
+    navRef.current.classList.toggle('toggled-on');
+    navRef.current.classList.toggle('nav-enabled');
+  };
+  return (
+    <StaticQuery
+      query={MENU_QUERY}
+      render={data => {
+        if (data.wpgraphql.menuItems) {
+          return (
+            <nav
+              id="site-navigation"
+              className="main-navigation nav primary flex items-center justify-end"
+              role="navigation"
+              aria-label="Primary Menu"
+              ref={navRef}
+            >
+              <MenuToggle onClick={animateButton} />
+              <div className="menu-primary-container">
+                <ul
+                  id="menu-primary"
+                  className="primary-menu header-font medium smooth gray list-reset"
+                >
+                  {data.wpgraphql.menuItems.nodes.map(menuItem => {
+                    if (menuItem.childItems.nodes.length) {
+                      return renderSubMenu(menuItem);
+                    } else {
+                      return renderMenuItem(menuItem);
+                    }
+                  })}
+                </ul>
+              </div>
+            </nav>
+          );
+        } else {
+          return null;
+        }
+      }}
+    />
+  );
+};
 
-export default Menu
+export default Menu;
