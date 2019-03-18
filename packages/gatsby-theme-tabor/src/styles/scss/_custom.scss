@@ -21,9 +21,9 @@ body .custom-logo-link img.custom-logo {
     }
   }
 }
-// .headroom .site-header .container {
-//   transition: padding 0.4s cubic-bezier(0.694, 0.0482, 0.335, 1);
-// }
+.headroom .site-header .container {
+  transition: padding 0.4s cubic-bezier(0.694, 0.0482, 0.335, 1);
+}
 
 .headroom--pinned {
   // @media only screen and(min-width: 600px) {
@@ -60,10 +60,10 @@ body .custom-logo-link img.custom-logo {
   }
 }
 
-//Headroom engagement bar
+//Header
 
-// initial state: headroom--unfixed -> bar drop-in drop-in--from-bottom drop-in-style-2 drop-in--js drop-in--not-top
+// initial state: site-header drop-in drop-in--from-top drop-in--js drop-in--pinned drop-in--top
 
-// scroll: headroom--unfixed headroom-disable-animation -> bar drop-in drop-in--from-bottom drop-in-style-2 drop-in--js drop-in--not-top drop-in--unpinned
+// scroll: headroom--unfixed headroom-disable-animation -> site-header drop-in drop-in--from-top drop-in--js drop-in--unpinned drop-in--not-top
 
-// scroll to top: headroom--pinned headroom--scrolled -> bar drop-in drop-in--from-bottom drop-in-style-2 drop-in--js drop-in--not-top drop-in--pinned
+// scroll to top: headroom--pinned headroom--scrolled -> site-header drop-in drop-in--from-top drop-in--js drop-in--not-top drop-in--pinned
