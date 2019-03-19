@@ -1,17 +1,16 @@
-import React from "react"
-import { graphql } from "gatsby"
-import PostEntryTitle from "./PostEntryTitle"
-import PostEntryMeta from "./PostEntryMeta"
-import PostEntryMedia from "./PostEntryMedia"
+import React from 'react';
+import PostEntryTitle from './PostEntryTitle';
+import PostEntryMeta from './PostEntryMeta';
+import PostEntryMedia from './PostEntryMedia';
 
 const PostEntry = ({ post }) => {
   const excerpt = post.excerpt
     ? post.excerpt
     : `${post.content &&
         post.content
-          .split(" ")
+          .split(' ')
           .slice(0, 30)
-          .join(" ")} ...`
+          .join(' ')} ...`;
 
   return (
     <article className="post type-post">
@@ -33,7 +32,7 @@ const PostEntry = ({ post }) => {
         />
       </div>
     </article>
-  )
-}
+  );
+};
 
-export default PostEntry
+export default PostEntry;

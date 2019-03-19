@@ -4,6 +4,7 @@ const PostTemplateFragment = `
     postId
     title
     content
+    link
     featuredImage {
       sourceUrl
       title
@@ -12,12 +13,14 @@ const PostTemplateFragment = `
       nodes {
         name
         slug
+        id
       }
     }
     tags {
       nodes {
         slug
         name
+        id
       }
     }
     author {
@@ -28,7 +31,7 @@ const PostTemplateFragment = `
       slug
     }
   }
-`
+`;
 
 const BlogPreviewFragment = `
   fragment BlogPreviewFragment on WPGraphQL_Post {
@@ -52,7 +55,7 @@ const BlogPreviewFragment = `
       slug
     }
   }
-`
+`;
 
-module.exports.PostTemplateFragment = PostTemplateFragment
-module.exports.BlogPreviewFragment = BlogPreviewFragment
+module.exports.PostTemplateFragment = PostTemplateFragment;
+module.exports.BlogPreviewFragment = BlogPreviewFragment;

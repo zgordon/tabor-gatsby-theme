@@ -1,6 +1,8 @@
-import React from "react"
-import { Link, StaticQuery, graphql } from "gatsby"
-import { createLocalLink } from "../utils"
+import React, { useRef, useState } from 'react';
+import { Link, StaticQuery, graphql } from 'gatsby';
+import { createLocalLink } from '../utils';
+import { BodyClass, If } from 'react-extras';
+import MenuToggle from './MenuToggle';
 
 const MENU_QUERY = graphql`
   fragment MenuFields on WPGraphQL_MenuItem {
@@ -26,78 +28,93 @@ const MENU_QUERY = graphql`
       }
     }
   }
-`
+`;
+
+const renderLink = menuItem =>
+  menuItem.connectedObject.__typename === 'WPGraphQL_MenuItem' ? (
+    <a href={menuItem.url} target="_blank" rel="noopener noreferrer">
+      {menuItem.label}
+    </a>
+  ) : createLocalLink(menuItem.url) ? (
+    <Link to={createLocalLink(menuItem.url)}>{menuItem.label}</Link>
+  ) : (
+    menuItem.label
+  );
 
 const renderMenuItem = menuItem => {
-  const link = createLocalLink(menuItem.url)
+  const link = createLocalLink(menuItem.url);
   if (menuItem.childItems && menuItem.childItems.nodes.length) {
-    return renderSubMenu(menuItem)
+    return renderSubMenu(menuItem);
   } else {
     return (
       <li className="menu-item" key={menuItem.id}>
-        {link ? (
-          <Link to={createLocalLink(menuItem.url)}>{menuItem.label}</Link>
-        ) : (
-          menuItem.label
-        )}
+        {renderLink(menuItem)}
       </li>
-    )
+    );
   }
-}
+};
 
-const renderSubMenu = menuItem => (
-  <li className="has-subMenu menu-item" key={menuItem.id}>
-    {createLocalLink(menuItem.url) ? (
-      <Link to={createLocalLink(menuItem.url)}>{menuItem.label}</Link>
-    ) : (
-      menuItem.label
-    )}
-    <ul className="menuItemGroup">
-      {menuItem.childItems.nodes.map(item => renderMenuItem(item))}
-    </ul>
-  </li>
-)
+const renderSubMenu = menuItem => {
+  return (
+    <li className="has-subMenu menu-item" key={menuItem.id}>
+      {renderLink(menuItem)}
 
-const Menu = ({ location }) => (
-  <StaticQuery
-    query={MENU_QUERY}
-    render={data => {
-      if (data.wpgraphql.menuItems) {
-        return (
-          <nav
-            id="site-navigation"
-            className="main-navigation nav primary flex items-center justify-end"
-            role="navigation"
-            aria-label="Primary Menu"
-          >
-            <button
-              className="menu-toggle"
-              aria-controls="top-menu"
-              aria-expanded="false"
+      <ul className="menuItemGroup">
+        {menuItem.childItems.nodes.map(item => renderMenuItem(item))}
+      </ul>
+    </li>
+  );
+};
+
+const Menu = ({ location }) => {
+  const navRef = useRef();
+  const [navOpen, setNavOpen] = useState(false);
+
+  const openNav = () => {
+    navRef.current.classList.toggle('toggled-on');
+    navRef.current.classList.toggle('nav-enabled');
+    navOpen ? setNavOpen(false) : setNavOpen(true);
+  };
+  return (
+    <StaticQuery
+      query={MENU_QUERY}
+      render={data => {
+        if (data.wpgraphql.menuItems) {
+          return (
+            <nav
+              id="site-navigation"
+              className="main-navigation nav primary flex items-center justify-end"
+              role="navigation"
+              aria-label="Primary Menu"
+              ref={navRef}
             >
-              <span className="screen-reader-text">Menu</span>
-            </button>
-            <div className="menu-primary-container">
-              <ul
-                id="menu-primary"
-                className="primary-menu header-font medium smooth gray list-reset"
-              >
-                {data.wpgraphql.menuItems.nodes.map(menuItem => {
-                  if (menuItem.childItems.nodes.length) {
-                    return renderSubMenu(menuItem)
-                  } else {
-                    return renderMenuItem(menuItem)
-                  }
-                })}
-              </ul>
-            </div>
-          </nav>
-        )
-      } else {
-        return null
-      }
-    }}
-  />
-)
+              <MenuToggle onClick={openNav} />
 
-export default Menu
+              <If condition={navOpen}>
+                <BodyClass add="nav-open" />
+              </If>
+              <div className="menu-primary-container">
+                <ul
+                  id="menu-primary"
+                  className="primary-menu header-font medium smooth gray list-reset"
+                >
+                  {data.wpgraphql.menuItems.nodes.map(menuItem => {
+                    if (menuItem.childItems.nodes.length) {
+                      return renderSubMenu(menuItem);
+                    } else {
+                      return renderMenuItem(menuItem);
+                    }
+                  })}
+                </ul>
+              </div>
+            </nav>
+          );
+        } else {
+          return null;
+        }
+      }}
+    />
+  );
+};
+
+export default Menu;

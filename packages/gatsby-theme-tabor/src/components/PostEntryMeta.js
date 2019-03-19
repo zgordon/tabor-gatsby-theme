@@ -6,7 +6,7 @@ const PostEntryMeta = ({ post }) => (
   <div className="entry-meta">
     <span className="posted-on">
       <Link to={`/blog/${post.uri}`}>
-        <time className="entry-date" datetime={post.date}>
+        <time className="entry-date" dateTime={post.date}>
           {moment(post.date).format(`MMMM D, YYYY`)}
         </time>
       </Link>

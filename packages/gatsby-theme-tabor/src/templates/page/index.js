@@ -1,6 +1,6 @@
-import React from "react"
-import Layout from "../../components/layout"
-import SEO from "../../components/seo"
+import React from 'react';
+import Layout from '../../components/Layout';
+import SEO from '../../components/SEO';
 
 const SinglePage = props => {
   const {
@@ -9,7 +9,7 @@ const SinglePage = props => {
     // data: {
     //   wpgraphql: { page },
     // },
-  } = props
+  } = props;
 
   return (
     <Layout>
@@ -35,7 +35,7 @@ const SinglePage = props => {
       </article>
       {/* #post-${ID} */}
     </Layout>
-  )
-}
+  );
+};
 
-export default SinglePage
+export default SinglePage;

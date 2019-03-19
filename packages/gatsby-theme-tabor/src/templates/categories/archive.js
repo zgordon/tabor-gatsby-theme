@@ -1,13 +1,13 @@
-import React from "react"
-import Layout from "../../components/layout"
-import PostEntry from "../../components/PostEntry"
-import HeaderArchive from "../../components/HeaderArchive"
-import SEO from "../../components/seo"
+import React from 'react';
+import Layout from '../../components/Layout';
+import PostEntry from '../../components/PostEntry';
+import HeaderArchive from '../../components/HeaderArchive';
+import SEO from '../../components/SEO';
 
 const SingleCategory = props => {
   const {
     pageContext: { name, posts },
-  } = props
+  } = props;
 
   return (
     <Layout>
@@ -19,10 +19,10 @@ const SingleCategory = props => {
 
       {posts.nodes &&
         posts.nodes.map(post => {
-          return <PostEntry key={post.id} post={post} />
+          return <PostEntry key={post.id} post={post} />;
         })}
     </Layout>
-  )
-}
+  );
+};
 
-export default SingleCategory
+export default SingleCategory;
