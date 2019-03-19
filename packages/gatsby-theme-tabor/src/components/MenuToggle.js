@@ -2,12 +2,12 @@ import React from 'react';
 
 const MenuToggle = ({ onClick }) => (
   <button
-    class="menu-toggle"
+    className="menu-toggle"
     aria-controls="top-menu"
     aria-expanded="false"
     onClick={onClick}
   >
-    <span class="screen-reader-text">Menu</span>
+    <span className="screen-reader-text">Menu</span>
   </button>
 );
 

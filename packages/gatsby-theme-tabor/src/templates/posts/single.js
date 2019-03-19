@@ -11,7 +11,9 @@ import SEO from '../../components/SEO';
 const renderTermNodes = (nodes, termType) => (
   <span className="cat-links header-font extra-small medium smooth dark-gray">
     {nodes.map(term => (
-      <Link to={`/blog/${termType}/${term.slug}`}>{term.name}</Link>
+      <Link key={term.id} to={`/blog/${termType}/${term.slug}`}>
+        {term.name}
+      </Link>
     ))}
   </span>
 );
@@ -24,10 +26,6 @@ const renderTerms = (categoryNodes = [], tagNodes = []) => (
 );
 
 const Post = ({ pageContext: post }) => {
-  // const {
-  //   pageContext: {title, content},
-  // } = props;
-  // const { title, content } = post;
   return (
     <Layout>
       <SEO title={`${post.title}`} />
@@ -38,7 +36,6 @@ const Post = ({ pageContext: post }) => {
             post={post}
             titleClass="entry-title h1"
           />
-
           <PostEntryMeta post={post} />
         </header>
         {post.featuredImage && <PostEntryMedia post={post} location="single" />}

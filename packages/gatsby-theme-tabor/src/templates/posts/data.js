@@ -13,12 +13,14 @@ const PostTemplateFragment = `
       nodes {
         name
         slug
+        id
       }
     }
     tags {
       nodes {
         slug
         name
+        id
       }
     }
     author {

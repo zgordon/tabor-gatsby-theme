@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react';
 
 const Subscribe = () => (
   <aside id="secondary" className="widget-area">
@@ -13,10 +13,10 @@ const Subscribe = () => (
                 OptinMonster
               </a>
               , or MailChimp for WordPress widgets. I don’t want to give you the
-              API credentials to my OptinMonster account now do I.{" "}
+              API credentials to my OptinMonster account now do I.{' '}
               <img
                 draggable="false"
-                class="emoji"
+                className="emoji"
                 alt="🙂"
                 src="https://s.w.org/images/core/emoji/11.2.0/svg/1f642.svg"
                 width="20px"
@@ -28,6 +28,6 @@ const Subscribe = () => (
       </div>
     </div>
   </aside>
-)
+);
 
-export default Subscribe
+export default Subscribe;

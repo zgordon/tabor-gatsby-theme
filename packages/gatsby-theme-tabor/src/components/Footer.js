@@ -1,5 +1,5 @@
-import React from "react"
-import Subscribe from "./Subscribe"
+import React from 'react';
+import Subscribe from './Subscribe';
 
 const Footer = () => (
   <footer className="site-footer">
@@ -8,15 +8,15 @@ const Footer = () => (
       <span className="site-copyright">
         <span
           className="copyright-year  "
-          itemscope=""
-          itemtype="http://schema.org/copyrightYear"
+          itemScope=""
+          itemType="http://schema.org/copyrightYear"
         >
           © {`${new Date().getFullYear()} `}
         </span>
         <span
           className="copyright-text"
-          itemscope=""
-          itemtype="http://schema.org/copyrightHolder"
+          itemScope=""
+          itemType="http://schema.org/copyrightHolder"
         >
           Tabor Gatsby Theme
         </span>
@@ -26,6 +26,6 @@ const Footer = () => (
       </span>
     </div>
   </footer>
-)
+);
 
-export default Footer
+export default Footer;
