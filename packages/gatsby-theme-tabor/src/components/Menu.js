@@ -1,6 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link, StaticQuery, graphql } from 'gatsby';
 import { createLocalLink } from '../utils';
+import { BodyClass, If } from 'react-extras';
 import MenuToggle from './MenuToggle';
 
 const MENU_QUERY = graphql`
@@ -67,9 +68,12 @@ const renderSubMenu = menuItem => (
 
 const Menu = ({ location }) => {
   const navRef = useRef();
-  const animateButton = () => {
+  const [navOpen, setNavOpen] = useState(false);
+
+  const openNav = () => {
     navRef.current.classList.toggle('toggled-on');
     navRef.current.classList.toggle('nav-enabled');
+    navOpen ? setNavOpen(false) : setNavOpen(true);
   };
   return (
     <StaticQuery
@@ -84,7 +88,11 @@ const Menu = ({ location }) => {
               aria-label="Primary Menu"
               ref={navRef}
             >
-              <MenuToggle onClick={animateButton} />
+              <MenuToggle onClick={openNav} />
+
+              <If condition={navOpen}>
+                <BodyClass add="nav-open" />
+              </If>
               <div className="menu-primary-container">
                 <ul
                   id="menu-primary"

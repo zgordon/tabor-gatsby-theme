@@ -7,7 +7,6 @@ import SocialNav from './SocialNav';
 
 const Header = () => {
   const headerRef = useRef();
-  console.log('ref', headerRef);
   const unpinHeader = () => {
     headerRef.current.classList.replace('drop-in--pinned', 'drop-in--unpinned');
     headerRef.current.classList.replace('drop-in--top', 'drop-in--not-top');

@@ -26,6 +26,7 @@
     "moment": "^2.24.0",
     "node-sass": "^4.11.0",
     "prop-types": "^15.7.2",
+    "react-extras": "^0.9.0",
     "react-headroom": "^2.2.8",
     "react-helmet": "^5.2.0",
     "react-typography": "^0.16.19",
