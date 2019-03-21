@@ -1,9 +1,9 @@
-import React from "react"
-import moment from "moment/moment"
-import { Link } from "gatsby"
+import React from 'react';
+import moment from 'moment/moment';
+import { Link } from 'gatsby';
 
 const PostEntryMeta = ({ post }) => (
-  <div className="entry-meta">
+  <div className="entry-meta flex items-center medium header-font gray">
     <span className="posted-on">
       <Link to={`/blog/${post.uri}`}>
         <time className="entry-date" dateTime={post.date}>
@@ -22,6 +22,6 @@ const PostEntryMeta = ({ post }) => (
       </span>
     </span>
   </div>
-)
+);
 
-export default PostEntryMeta
+export default PostEntryMeta;
