@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Link, StaticQuery, graphql } from 'gatsby';
 import { createLocalLink } from '../utils';
-import { BodyClass, If } from 'react-extras';
+import { BodyClass } from 'react-extras';
 import MenuToggle from './MenuToggle';
 
 const MENU_QUERY = graphql`
@@ -42,7 +42,6 @@ const renderLink = menuItem =>
   );
 
 const renderMenuItem = menuItem => {
-  const link = createLocalLink(menuItem.url);
   if (menuItem.childItems && menuItem.childItems.nodes.length) {
     return renderSubMenu(menuItem);
   } else {
@@ -59,7 +58,7 @@ const renderSubMenu = menuItem => {
     <li className="has-subMenu menu-item" key={menuItem.id}>
       {renderLink(menuItem)}
 
-      <ul className="menuItemGroup">
+      <ul className="menuItemGroup sub-menu">
         {menuItem.childItems.nodes.map(item => renderMenuItem(item))}
       </ul>
     </li>
@@ -90,9 +89,7 @@ const Menu = ({ location }) => {
             >
               <MenuToggle onClick={openNav} />
 
-              <If condition={navOpen}>
-                <BodyClass add="nav-open" />
-              </If>
+              {navOpen && <BodyClass add="nav-open" />}
               <div className="menu-primary-container">
                 <ul
                   id="menu-primary"
