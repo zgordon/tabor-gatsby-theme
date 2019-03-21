@@ -70,6 +70,30 @@ body .custom-logo-link img.custom-logo {
   }
 }
 
+//gutenberg entry content
+
+.entry-content .wp-block-pullquote {
+  // margin-left: 20px;
+  // margin-right: 20px;
+  max-width: 700px;
+  border-color: #242424;
+  padding-bottom: 2.5em;
+  padding-top: 2.5em;
+  border-width: 3px;
+  border-top: 3px solid #242424;
+  border-bottom: 3px solid #242424;
+}
+.wp-block-embed-vimeo {
+  max-width: 940px;
+  margin: 0 auto !important;
+  display: block;
+}
+
+.entry-content > *.alignwide,
+.entry-summary > *.alignwide {
+  max-width: 940px;
+}
+
 //Gutenberg
 
 .wp-block-audio figcaption {
