@@ -8,10 +8,10 @@ Checkout the [Tabor Theme Demo](https://tabor-gatsby-theme.netlify.com/) to see 
 
 ```
 # Clone the repo
-git clone https://github.com/zgordon/twentynineteen-gatsby-theme.git
+git clone https://github.com/zgordon/tabor-gatsby-theme.git
 
 # Move into the new directory
-cd twentynineteen-gatsby-theme
+cd tabor-gatsby-theme
 
 # Install dependencies
 yarn
