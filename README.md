@@ -17,7 +17,7 @@ cd tabor-gatsby-theme
 yarn
 
 # Start the site on http://localhost:8000
-yarn workspace starter develop
+yarn workspace site develop
 ```
 
 ## For Help
