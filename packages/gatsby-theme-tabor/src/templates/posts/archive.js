@@ -2,6 +2,8 @@ import React from "react"
 import Layout from "../../components/Layout"
 import PostEntry from "../../components/PostEntry"
 import Pagination from "../../components/Pagination"
+import SEO from '../../components/SEO';
+
 
 const BlogArchive = props => {
   const {
@@ -9,6 +11,7 @@ const BlogArchive = props => {
   } = props
   return (
     <Layout>
+      <SEO/>
       {nodes && nodes.map(post => <PostEntry key={post.postId} post={post} />)}
       <Pagination
         pageNumber={pageNumber}
