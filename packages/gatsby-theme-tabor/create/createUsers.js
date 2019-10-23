@@ -3,9 +3,9 @@ const userTemplate = require.resolve(`../src/templates/users/archive.js`)
 
 module.exports = async ({ actions, graphql }) => {
   const GET_USERS = `
-    query GET_USERS($first: Int) {
+    query GET_USERS($first: Int $after:String) {
       wpgraphql {
-        users(first: $first) {
+        users(first: $first, after:$after) {
           pageInfo {
             hasNextPage
             endCursor

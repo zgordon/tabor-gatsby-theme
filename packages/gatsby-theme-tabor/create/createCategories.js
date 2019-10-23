@@ -5,9 +5,9 @@ const categoryTemplate = require.resolve(
 
 module.exports = async ({ actions, graphql }) => {
   const GET_CATEGORIES = `
-    query GET_CATEGORIES($first: Int) {
+    query GET_CATEGORIES($first: Int $after:String) {
       wpgraphql {
-        categories(first: $first) {
+        categories(first: $first, after:$after) {
           pageInfo {
             hasNextPage
             endCursor
