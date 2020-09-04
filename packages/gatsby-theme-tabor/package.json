@@ -24,7 +24,7 @@
     "gatsby-plugin-typography": "^2.2.8",
     "gatsby-source-graphql": "^2.0.14",
     "moment": "^2.24.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.1",
     "prop-types": "^15.7.2",
     "react-extras": "^0.9.0",
     "react-headroom": "^2.2.8",
